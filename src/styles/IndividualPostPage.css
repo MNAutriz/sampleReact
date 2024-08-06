@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.post-container{
+    height: 82vh;
+    width: 100%;
+    display: flex;
+    border: 3px solid black;
+    flex-direction: column;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    background-color: #1976d2;
+    padding: 20px; /* Add padding if needed */
+    border: none;
+    border-radius: 50px;
+    white-space: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    transition: background-color 0.5s;
+}
+
+.post-header:hover{
+    background-color: #4fc3f7;
+}
+
+.post-header h2{
+    margin-left: 15px;
+    color: white;
+}
+
+.post-date-time{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px; /* Add padding if needed */
+}
+
+.post-body-indiv{
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 5%;
+    width: 55%;
+    margin: 10px auto;
+    padding-bottom: 15px;
+}
+
+.post-icon{
+    width: 50px;
+    height: 50px;
+    border: none;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-date-time{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+
+.delete-button{
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgb(225, 54, 54);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+
+.delete-post-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-button-icon{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
+    margin-right: 6px;
+}
+
+.delete-button:hover{
+    background-color:rgb(238, 46, 46);
+    cursor: pointer;
+}
+
+.delete-post-container p{
+    font-size: 16px;
+}
+
+button:active{
+    opacity: 0.8;
+}
+
+.not-found-div{
+    height: 100vh;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.not-found-button{
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    width: 30%;
+    border-radius: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #1976d2;
+}

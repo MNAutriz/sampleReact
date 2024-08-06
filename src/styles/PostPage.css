@@ -1,0 +1,89 @@
+.post-creation-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    width: 100%;
+    flex-direction: column;
+}
+
+.post-creation-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #1976d2;
+    padding: 15px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+}
+
+.create-post-icon {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 40px; /* Increased width */
+    height: 40px; /* Increased height */
+}
+
+.post-input-div {
+    margin-top: 40px;
+    height: auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background-color: rgb(190, 228, 240);
+}
+
+.new-post-form {
+    margin-top: 40px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.post-title-input, .post-date-input, .post-body-input {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-date-input, .post-body-input, .post-title-input {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+#submit-new-post-button {
+    width: 10%;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+    background-color: #2196f3;
+    transition: background-color 0.5s, cursor 0.5s;
+ }
+
+#submit-new-post-button .submit-post-icon {
+    /* Styles for the icon */
+    font-size: 50px;
+    color: white;
+    /* Additional styles */
+}
+
+#submit-new-post-button:hover{
+    background-color: #1976d2;
+    cursor: pointer
+}
