@@ -10,6 +10,8 @@
     display: flex;
     border: 3px solid black;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-header {
@@ -19,8 +21,6 @@
     padding: 20px; /* Add padding if needed */
     border: none;
     border-radius: 50px;
-    white-space: wrap;
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 30%;
@@ -82,6 +82,21 @@
     border: none;
 }
 
+.edit-button{
+    margin-top: 30px;
+    margin-left: 30px;
+    padding: 20px;
+    background: rgb(205, 205, 12);
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.5s, cursor 0.5s;
+}
+
+.edit-button-icon{
+    margin-right: 5px;
+    font-size: 30px;
+}
 
 .delete-post-container{
     display: flex;
@@ -102,6 +117,21 @@
 }
 
 .delete-post-container p{
+    font-size: 16px;
+}
+
+.edit-post-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button:hover{
+    background-color: rgb(223, 223, 23);
+    cursor: pointer;
+}
+
+.edit-post-container p{
     font-size: 16px;
 }
 
@@ -131,4 +161,12 @@ button:active{
     justify-content: center;
     border: none;
     background-color: #1976d2;
+}
+
+.clickable-buttons-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 60%;
 }

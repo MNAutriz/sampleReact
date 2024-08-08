@@ -3,17 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserSecret, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 
-const PostPage = ({ posts, setPosts, newTitle, setnewTitle, newDateTime, setnewDateTime, newBody, setnewBody }) => {
-    const handleAddPost = (e) => {
-        e.preventDefault();
-        const newId = Number(posts.length + 1);
-        const createdPost = { id: newId, title: newTitle, datetime: newDateTime, body: newBody };
-        setPosts([...posts, createdPost]);
-        setnewTitle('');
-        setnewDateTime('');
-        setnewBody('');
-    }
-
+const PostPage = ({ posts, setPosts, newTitle, setnewTitle, newDateTime, setnewDateTime, newBody, setnewBody, handleAddPost }) => {
     return (
         <div className="post-creation-container">
             <div className='post-creation-div'>
