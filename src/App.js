@@ -8,7 +8,9 @@ import './styles/App.css';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import api from './api/posts.js';
 import EditPage from './components/EditPage.js';
-
+import useAxiosFetch from './hooks/useAxiosFetch.js';
+import useWindowSizing from './hooks/useWindowSizing.js';
+import UseFetchAxios from './hooks/useFetchAxios.js';
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -20,8 +22,17 @@ function App() {
   const [editBody, seteditBody] = useState('');
   const [editTitle, seteditTitle] = useState('');
   const [editDate, seteditDate] = useState('');
-
   const navigate = useNavigate();
+  const { width } = useWindowSizing();
+
+  const {data, loading, error} = UseFetchAxios('http://localhost:1000/posts');
+
+
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
+
+
 
   async function handleDelete(idToDelete) {
     try{
@@ -50,6 +61,7 @@ function App() {
     try{
       const response = await api.post('/posts', createdPost);
       setPosts([...posts, response.data]);
+      console.log(response);
       setnewTitle('');
       setnewDateTime('');
       setnewBody('');
@@ -69,6 +81,7 @@ function App() {
     
     try{
       const response = await api.put(`/posts/${idToBeEdited}`, foundPost);
+      console.log(response);
       setPosts(posts);
       seteditBody('');
       seteditDate('');
@@ -91,29 +104,10 @@ function App() {
     }
   }, [search, posts]);
 
-
-  useEffect(() => {
-    
-    async function renderData() {
-      try{
-        const res = await api.get('/posts');
-        setPosts(res.data);
-      } catch(error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      }
-    } 
-
-    renderData();
-
-  }, [])
-
-
   return (
     <Routes>
-      <Route path='/' element={<Layout search={search} setSearch={setSearch} handleSearching={handleSearching}/>}>
-        <Route index element={<HomePage posts={searchResult}/>} /> 
+      <Route path='/' element={<Layout search={search} setSearch={setSearch} handleSearching={handleSearching} width={width}/>}>
+        <Route index element={<HomePage posts={searchResult} data={data} error={error} loading={loading}/>} /> 
         <Route path='post'>
           <Route index element={<PostPage posts={posts} setPosts={setPosts} newTitle={newTitle} setnewTitle={setnewTitle} newDateTime={newDateTime} setnewDateTime={setnewDateTime} newBody={newBody} setnewBody={setnewBody} handleAddPost={handleAddPost}/>} />
           <Route path=':id' element={<IndividualPost posts={posts} setPosts={setPosts} handleDelete={handleDelete} editBody={editBody} seteditBody={seteditBody} editDate={editDate} seteditDate={seteditDate} editTitle={seteditTitle} seteditTitle={seteditTitle}/>} />

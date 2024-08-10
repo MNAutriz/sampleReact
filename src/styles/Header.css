@@ -17,3 +17,10 @@
     height: 50px;
     width: auto;
 }
+
+.device-logo{
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+}
