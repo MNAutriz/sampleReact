@@ -4,11 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCircleXmark, faBomb } from '@fortawesome/free-solid-svg-icons'; 
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
+import api from "../api/posts";
 
-const IndividualPost = ({posts, setPosts, handleDelete}) => {
+const IndividualPost = () => {
+    const {posts, setPosts} = useContext(DataContext);
     const navigate = useNavigate();
     let {id} = useParams();
     let foundPost = posts.find((post) => post.id.toString() === id);
+
+    async function handleDelete(idToDelete) {
+        try{
+          await api.delete(`posts/${idToDelete}`);
+          const finalPost = posts.filter((post) => idToDelete.toString() !== post.id.toString());
+          setPosts(finalPost);
+          navigate('/');
+        } catch (err){
+          console.log('Error: ', err.data);
+        }
+    }
+
 
     if(!foundPost){
         return (

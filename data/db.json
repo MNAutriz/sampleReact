@@ -1,22 +1,22 @@
 {
   "posts": [
     {
-      "id": "3",
-      "title": "TZ",
-      "datetime": "za",
-      "body": "z"
-    },
-    {
-      "id": "1",
-      "title": "zcxz",
-      "datetime": "cxz",
-      "body": "cxzxczcxcxz"
-    },
-    {
       "id": "2",
-      "title": "cxz",
-      "datetime": "cxz",
-      "body": "cxzxczcxcxz"
+      "title": "Chinatu Okano",
+      "datetime": "03/18/2004",
+      "body": "The day i fell in love with that girl."
+    },
+    {
+      "id": "4",
+      "title": "Pragmatic Programmer",
+      "datetime": "03/18/2004",
+      "body": "Hi this is the birth of the greatest programmer."
+    },
+    {
+      "id": "3",
+      "title": "Hello World",
+      "datetime": "10/08/2024",
+      "body": "Shakespeare is a language for literature aficionados. According to the docs: \"The design goal was to make a language with beautiful source code that resembled Shakespeare plays. (...) The first line of every SPL program is the title. Or actually, everything up until the first period is the title, whether it's one line, three lines, or half a line. You're generally free to insert space and newlines wherever you want in the code, but we urge you to please indent tastefully. The title serves only aesthetic purposes. \"\n"
     }
   ]
 }

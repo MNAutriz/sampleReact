@@ -2,10 +2,47 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserSecret, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import '../styles/EditPage.css';
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
+import { useState } from "react";
+import api from "../api/posts";
+import { useNavigate } from "react-router-dom";
 
-const EditPage = ({editBody, seteditBody, editDate, seteditDate, editTitle, seteditTitle, handleEdit}) => {
+const EditPage = () => {
+    const navigate = useNavigate();
+    const [editBody, seteditBody] = useState('');
+    const [editTitle, seteditTitle] = useState('');
+    const [editDate, seteditDate] = useState('');
+    const {posts, setPosts} = useContext(DataContext);
+
     const {id} = useParams();
     
+    async function handleEdit(idToBeEdited){
+        let foundPost = posts.find((post) => idToBeEdited.toString() === post.id.toString());
+    
+        if(foundPost){
+          foundPost.title = editTitle;
+          foundPost.datetime = editDate;
+          foundPost.body = editBody;
+        }
+        
+        try{
+          const response = await api.put(`/posts/${idToBeEdited}`, foundPost);
+          console.log(response);
+          setPosts(posts);
+          seteditBody('');
+          seteditDate('');
+          seteditTitle('');
+          navigate('/');
+        } catch(err){
+          console.log('Error: ', err);
+        }
+      }
+
+
+
+
+
     return (
         <div className="edit-creation-container">
             <div className='edit-creation-div'>

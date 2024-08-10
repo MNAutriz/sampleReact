@@ -1,9 +1,32 @@
 import '../styles/PostPage.css';
-import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserSecret, faLaptopCode } from '@fortawesome/free-solid-svg-icons';
+import { useContext, useState } from 'react';
+import DataContext from '../context/DataContext';
+import api from '../api/posts';
 
-const PostPage = ({ posts, setPosts, newTitle, setnewTitle, newDateTime, setnewDateTime, newBody, setnewBody, handleAddPost }) => {
+const PostPage = () => {
+    const [newTitle, setnewTitle] = useState('');
+    const [newDateTime, setnewDateTime] = useState('');
+    const [newBody, setnewBody] = useState('');
+    const {posts, setPosts} = useContext(DataContext);
+
+    async function handleAddPost(e){
+        e.preventDefault();
+        const newId = String(posts.length + 1);
+        const createdPost = { id: newId, title: newTitle, datetime: newDateTime, body: newBody };
+        try{
+          const response = await api.post('/posts', createdPost);
+          setPosts([...posts, response.data]);
+          console.log(response);
+          setnewTitle('');
+          setnewDateTime('');
+          setnewBody('');
+        } catch(err){
+          console.log('Error: ', err.message);
+        }
+      } 
+
     return (
         <div className="post-creation-container">
             <div className='post-creation-div'>
